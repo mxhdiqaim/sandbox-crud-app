@@ -6,6 +6,8 @@ import users from "./src/routes/users.js";
 import auth from "./src/routes/auth.js";
 import { connectDB } from "./src/configs/db.js";
 
+dotenv.config();
+
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
