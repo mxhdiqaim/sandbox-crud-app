@@ -43,10 +43,20 @@ const userReducer = (state, action) => {
         user: action.payload,
         loading: false,
       };
+    case LOGOUT:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        users: null,
+        error: action.payload,
+      };
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGIN_FAIL:
-    case LOGOUT:
       return {
         ...state,
         token: null,

@@ -17,7 +17,7 @@ const UserItem = ({ user }) => {
       >
         <label htmlFor={"inputId"}>
           <Avatar
-            src={avatar.avatar_url}
+            src={avatar && avatar.avatar_url}
             sx={{ borderRadius: "50%", width: "60px", height: "60px", mr: 2 }}
             alt={name}
           />

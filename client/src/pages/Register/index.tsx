@@ -44,7 +44,7 @@ const Register = (props: any) => {
         email,
         password,
       });
-      enqueueSnackbar("Login...", { variant: "success" });
+      enqueueSnackbar("Signin...", { variant: "success" });
     }
   };
 

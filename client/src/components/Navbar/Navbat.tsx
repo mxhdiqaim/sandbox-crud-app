@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useAuth, logout } from "../../context/users/UserState";
 import { Container, Typography } from "@mui/material";
+import { useSnackbar } from "notistack";
 
 const Navbar = ({ title, icon }: any) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [authState, authDispatch] = useAuth();
   const { isAuthenticated } = authState;
 
   const onLogout = () => {
     logout(authDispatch);
+
+    enqueueSnackbar("Login Out...", { variant: "success" });
   };
 
   const authLinks = (
