@@ -8,7 +8,7 @@
     "build": "cd client && npm install && npm run build",
     "server": "nodemon --watch server server/server.js",
     "client": "npm start --prefix  client",
-    "start": "nodemon --watch server --exec node server/server.js",
+    "start": "nodemon --watch server node server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
