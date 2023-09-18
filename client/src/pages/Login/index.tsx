@@ -3,8 +3,10 @@ import { Navigate } from "react-router-dom";
 import AlertContext from "../../context/alert/alertContext";
 import { useAuth, clearErrors, login } from "../../context/users/UserState";
 import { Link } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const Login = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const alertContext = useContext(AlertContext);
   const { setAlert } = alertContext;
 
@@ -37,6 +39,7 @@ const Login = () => {
         email,
         password,
       });
+      enqueueSnackbar("Signin...", { variant: "success" });
     }
   };
   if (isAuthenticated) return <Navigate to="/" />;

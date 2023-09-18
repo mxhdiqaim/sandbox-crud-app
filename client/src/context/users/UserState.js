@@ -37,7 +37,7 @@ export const loadUser = async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const res = await axios.get("http://localhost:8123/api/auth", config);
+    const res = await axios.get("/api/auth", config);
 
     dispatch({
       type: USER_LOADED,
@@ -57,7 +57,7 @@ export const getUsers = async (dispatch) => {
       },
     };
 
-    const res = await axios.get(`http://localhost:8123/api/users`, config);
+    const res = await axios.get(`/api/users`, config);
 
     dispatch({
       type: LOAD_USERS,
@@ -72,7 +72,7 @@ export const getUsers = async (dispatch) => {
 // Register User
 export const register = async (dispatch, formData) => {
   try {
-    const res = await axios.post("http://localhost:8123/api/users", formData);
+    const res = await axios.post("/api/users", formData);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -98,11 +98,7 @@ export const updateUser = async (dispatch, user) => {
   };
 
   try {
-    const res = await axios.put(
-      `http://localhost:8123/api/users/${user._id}`,
-      user,
-      config
-    );
+    const res = await axios.put(`/api/users/${user._id}`, user, config);
 
     dispatch({
       type: UPDATE_USER,
@@ -119,7 +115,7 @@ export const updateUser = async (dispatch, user) => {
 // Login User
 export const login = async (dispatch, formData) => {
   try {
-    const res = await axios.post("http://localhost:8123/api/auth", formData);
+    const res = await axios.post("/api/auth", formData);
 
     dispatch({
       type: LOGIN_SUCCESS,

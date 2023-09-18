@@ -11,11 +11,14 @@ import {
   Typography,
 } from "@mui/material";
 import { UserForm } from "../../components";
+import { useSnackbar } from "notistack";
 
 const Account = () => {
   const [authState, authDispatch] = useAuth();
   const { user, isAuthenticated } = authState;
   const navigate = useNavigate();
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const [current, setCurrent] = useState();
 
@@ -39,6 +42,8 @@ const Account = () => {
     if (user) {
       updateUser(authDispatch, { image: image, _id: user._id });
     }
+
+    enqueueSnackbar("Uploading Image", { variant: "success" });
   };
 
   const handleCurrent = (e: any) => {

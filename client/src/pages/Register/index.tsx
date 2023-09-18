@@ -1,11 +1,12 @@
-import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import AlertContext from "../../context/alert/alertContext";
-// import { useAuth, clearErrors, register } from "../../context/auth/AuthState";
 import { useAuth, clearErrors, register } from "../../context/users/UserState";
-import { Link } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const Register = (props: any) => {
+  const { enqueueSnackbar } = useSnackbar();
   const alertContext = useContext(AlertContext);
   const [authState, authDispatch] = useAuth();
   const { error, isAuthenticated } = authState;
@@ -43,6 +44,7 @@ const Register = (props: any) => {
         email,
         password,
       });
+      enqueueSnackbar("Login...", { variant: "success" });
     }
   };
 
